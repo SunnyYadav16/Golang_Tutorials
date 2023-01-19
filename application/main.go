@@ -18,12 +18,21 @@ var reader = bufio.NewReader(os.Stdin)
 
 func withdraw() {
 
-	fmt.Println("Please enter the amount in multiples of 100, 500! ")
+	fmt.Println("Please enter the amount in multiples of 100! ")
 	amount, _ := reader.ReadString('\n')
 
-	withdrawAmount, _ := strconv.ParseInt(strings.TrimSpace(amount), 10, 64)
+	withdrawAmount, error := strconv.ParseInt(strings.TrimSpace(amount), 10, 64)
+	if error != nil {
+		fmt.Println("Invalid amount entered")
+		return
+	}
 
-	if (withdrawAmount%100 == 0 || withdrawAmount%500 == 0) && withdrawAmount <= 200000 && withdrawAmount <= bankBalance {
+	if withdrawAmount > 20000 {
+		fmt.Println("You can withdraw maximum 20000 at a time")
+		return
+	}
+
+	if (withdrawAmount%100 == 0 || withdrawAmount%500 == 0) && withdrawAmount <= bankBalance && withdrawAmount > 0 {
 		bankBalance -= withdrawAmount
 		fmt.Println("Please collect your cash", withdrawAmount)
 
@@ -83,9 +92,15 @@ func deposit() {
 	if errs != nil {
 		fmt.Println("Error reading amount")
 	}
+
 	amount, amountError := strconv.ParseInt(strings.TrimSpace(amountInt), 10, 64)
 	if amountError != nil {
-		fmt.Println("Error reading amount")
+		defer tryToRecover()
+		panic("Invalid amount entered")
+	}
+	if amount < 0 || amount > 100000 {
+		fmt.Println("Invalid amount entered")
+		return
 	}
 
 	bankBalance += amount
@@ -109,7 +124,8 @@ func main() {
 	fmt.Println("Please insert your card")
 
 	if !cardCheck() {
-		fmt.Println("Your card is invalid")
+		fmt.Println("Thank you for using Simform Bank ATM")
+		os.Exit(0)
 	}
 
 start:
