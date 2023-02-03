@@ -124,8 +124,7 @@ func main() {
 	fmt.Println("Please insert your card")
 
 	if !cardCheck() {
-		fmt.Println("Thank you for using Simform Bank ATM")
-		os.Exit(0)
+		exitProgram()
 	}
 
 start:
@@ -168,9 +167,7 @@ start:
 		time.Sleep(2 * time.Second)
 		goto start
 	} else {
-		fmt.Println()
-		fmt.Println("Thank you for using Simform Bank ATM")
-		os.Exit(0)
+		exitProgram()
 	}
 
 }
