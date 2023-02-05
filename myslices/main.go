@@ -21,10 +21,11 @@ func main() {
 	fmt.Println(scores)
 
 	scores[0] = 20
-	scores[1] = 10
+	//scores[1] = 10
 	scores[2] = 30
 	//scores[3] = 40               // This will throw an error because we have only defined slice upto 3 places
 	fmt.Println(scores)
+	fmt.Println("Length: ", len(scores))
 
 	scores = append(scores, 40)
 	fmt.Println(len(scores))
@@ -35,4 +36,12 @@ func main() {
 	sort.Ints(scores)
 	fmt.Println(scores)
 	fmt.Println(sort.IntsAreSorted(scores))
+
+	// Delete values from slice based on index
+	var courses = []string{"Docker", "Kubernetes", "Puppet", "Terraform", "AWS", "Azure", "GCP"}
+	fmt.Println(courses)
+
+	var index int = 2
+	courses = append(courses[:index], courses[index+1:]...)
+	fmt.Println(courses)
 }

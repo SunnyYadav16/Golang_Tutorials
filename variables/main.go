@@ -31,7 +31,7 @@ func main() {
 	fmt.Println("Hello,", anotherVariable)
 	fmt.Println("Type, %T", anotherVariable)
 
-	// implicit type
+	// implicit type - Cannot change the type of the variable if declared once
 	var website = "abcd.com"
 	fmt.Println("Hello,", website)
 

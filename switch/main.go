@@ -9,7 +9,8 @@ import (
 func main() {
 	fmt.Println("Welcome to the switch class")
 
-	rand.Seed(time.Now().UnixNano())
+	//rand.Seed(time.Now().UnixNano())
+	rand.NewSource(time.Now().UnixNano())
 	diceNumber := rand.Intn(7)
 	fmt.Println("Dice Number", diceNumber)
 
@@ -28,6 +29,8 @@ func main() {
 		fmt.Println("You got 5")
 	case 6:
 		fmt.Println("You got 6")
+	default:
+		fmt.Println("You got 0")
 	}
 
 }

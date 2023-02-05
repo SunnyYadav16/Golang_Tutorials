@@ -6,10 +6,10 @@ func main() {
 
 	fmt.Println("Welcome to the Struct tutorial")
 
-	my_user_struct := User{"John", "happy@gomail.com", true, 20}
-	fmt.Println("Struct details are: ", my_user_struct)
-	fmt.Printf("Struct details are: %+v", my_user_struct)
-	fmt.Printf("Name is %v and email is %v", my_user_struct.Name, my_user_struct.Email)
+	myUserStruct := User{"John", "happy@gomail.com", true, 20}
+	fmt.Println("Struct details are: ", myUserStruct)
+	fmt.Printf("Struct details are: %+v", myUserStruct)
+	fmt.Printf("Name is %v and email is %v", myUserStruct.Name, myUserStruct.Email)
 
 }
 
